@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import CurrencyInput from "./CurrencyInput";
 import ExchangeTable from "./ExchangeTable";
-import "bootstrap/dist/css/bootstrap.min.css";
+import AboutButton from "./AboutButton";
 const API_KEY = process.env.REACT_APP_EXCHANGE_API_KEY;
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     const [convertedRates, setConvertedRates] = useState({});
     const [loading, setLoading] = useState(false);
 
-    const targetCurrencies = ["MXN", "USD", "EUR", "GBP", "CAD", "JPY"];
+    const targetCurrencies = ["MXN", "USD", "EUR", "GBP", "JPY", "CAD"];
 
     const handleConvert = () => {
         setLoading(true);
@@ -21,7 +22,7 @@ function App() {
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    const baseRate = data.rates[currency];
+                    const baseRate = data.rates[currency] || 1;
                     const newRates = {};
                     for (let key of targetCurrencies) {
                         newRates[key] = data.rates[key] / baseRate;
@@ -53,6 +54,9 @@ function App() {
                     convertedRates={convertedRates}
                     amount={amount}
                 />
+            </div>
+            <div className="mt-3">
+                <AboutButton />
             </div>
         </div>
     );

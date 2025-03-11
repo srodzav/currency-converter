@@ -7,8 +7,8 @@ const getFlagUrl = (currency) => {
         EUR: "eu",
         MXN: "mx",
         GBP: "gb",
-        CAD: "ca",
         JPY: "jp",
+        CAD: "ca",
     };
     return `https://flagcdn.com/w40/${countryMap[currency]}.png`;
 };
