@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import CurrencyInput from "./CurrencyInput";
 import ExchangeTable from "./ExchangeTable";
+import "bootstrap/dist/css/bootstrap.min.css";
 const API_KEY = process.env.REACT_APP_EXCHANGE_API_KEY;
 
 function App() {
@@ -35,25 +36,23 @@ function App() {
     };
 
     return (
-        <div className="container mt-5 App">
-            <div className="card shadow p-4">
-                <header className="App-header">
-                    <h2 className="text-center mb-3">Currency Converter</h2>
-                    <CurrencyInput
-                        amount={amount}
-                        setAmount={setAmount}
-                        currency={currency}
-                        setCurrency={setCurrency}
-                        targetCurrencies={targetCurrencies}
-                        handleConvert={handleConvert}
-                        loading={loading}
-                    />
-                    <ExchangeTable
-                        targetCurrencies={targetCurrencies}
-                        convertedRates={convertedRates}
-                        amount={amount}
-                    />
-                </header>
+        <div className="container App">
+            <div className="card">
+                <h2 className="text-center mb-3">Currency Converter</h2>
+                <CurrencyInput
+                    amount={amount}
+                    setAmount={setAmount}
+                    currency={currency}
+                    setCurrency={setCurrency}
+                    targetCurrencies={targetCurrencies}
+                    handleConvert={handleConvert}
+                    loading={loading}
+                />
+                <ExchangeTable
+                    targetCurrencies={targetCurrencies}
+                    convertedRates={convertedRates}
+                    amount={amount}
+                />
             </div>
         </div>
     );
