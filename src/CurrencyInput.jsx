@@ -38,8 +38,8 @@ function CurrencyInput({
 
     return (
         <div className="container">
-            <div className="row">
-                <div className="col-sm">
+            <div className="row d-grid gap-3">
+                <div className="col-lg-6 col-sm">
                     <div class="input-group">
                         <span class="input-group-text">$</span>
                         <input
@@ -51,7 +51,7 @@ function CurrencyInput({
                         />
                     </div>
                 </div>
-                <div className="col-sm">
+                <div className="col-lg-6 col-sm">
                     <Select
                         options={currencyOptions}
                         value={currencyOptions.find(

@@ -33,10 +33,11 @@ function AboutButton() {
                 <Modal.Body>
                     This currency converter was made with{" "}
                     <b>
-                        <a href="https://exchangeratesapi.io/">
+                        <a href="https://exchangeratesapi.io/" target="_blank">
                             exchangeratesapi.io
                         </a>
-                    </b>
+                    </b>{" "}
+                    API.
                 </Modal.Body>
             </Modal>
         </>

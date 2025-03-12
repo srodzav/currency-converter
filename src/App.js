@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CurrencyInput from "./CurrencyInput";
@@ -11,6 +11,7 @@ function App() {
     const [currency, setCurrency] = useState("EUR");
     const [convertedRates, setConvertedRates] = useState({});
     const [loading, setLoading] = useState(false);
+    const [currentTime, setCurrentTime] = useState("");
 
     const targetCurrencies = ["MXN", "USD", "EUR", "GBP", "JPY", "CAD"];
 
@@ -36,8 +37,20 @@ function App() {
             .finally(() => setLoading(false));
     };
 
+    useEffect(() => {
+        const fecthDate = async () => {
+            const exchangeDate = new Date().toLocaleDateString("es-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+            setCurrentTime(`Currency Change at ${exchangeDate}`);
+        };
+        fecthDate();
+    }, []);
+
     return (
-        <div className="container App">
+        <div className="container mt-5 px-lg-5 App">
             <div className="card">
                 <h2 className="text-center mb-3">Currency Converter</h2>
                 <CurrencyInput
@@ -54,6 +67,9 @@ function App() {
                     convertedRates={convertedRates}
                     amount={amount}
                 />
+            </div>
+            <div class="text-center pt-4">
+                <small className="text-muted">{currentTime}</small>
             </div>
             <div className="mt-3">
                 <AboutButton />
